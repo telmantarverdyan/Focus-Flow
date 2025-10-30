@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Flow - Functional Panel</title>
+<style>
+  body { margin:0; padding:0; font-family:"SF Pro Display",sans-serif; background:rgba(30,30,30,0.8); color:#f0f0f0; display:flex; align-items:center; justify-content:center; height:100vh; overflow:hidden; }
+  .glass-panel { backdrop-filter:blur(25px); background:rgba(20,20,20,0.5); border-radius:24px; border:1px solid rgba(255,255,255,0.15); padding:24px; display:flex; flex-direction:column; gap:20px; min-width:320px; max-width:360px; }
+  .panel-header { display:flex; justify-content:space-between; font-weight:700; }
+  .mode-display { font-weight:500; padding:8px 14px; border-radius:16px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); }
+  .mode-selector { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  .mode-btn { flex:1 1 45%; padding:10px 14px; border-radius:16px; border:1px solid rgba(255,255,255,0.3); background:rgba(30,30,30,0.4); color:#f0f0f0; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; font-weight:500; }
+  .mode-btn.selected { background:rgba(10,132,255,0.3); border-color:rgba(10,132,255,0.5); color:#fff; }
+  .glass-btn { padding:10px 18px; border-radius:18px; border:1px solid rgba(255,255,255,0.2); cursor:pointer; margin-top:10px; background:rgba(30,30,30,0.5); color:#f0f0f0; }
+  #output { margin-top:10px; padding:10px; background:rgba(0,0,0,0.2); border-radius:12px; min-height:50px; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+
+<div class="glass-panel">
+  <div class="panel-header">
+    <span>Focus Flow</span>
+    <span class="mode-display" id="currentMode">Mode: Research</span>
+  </div>
+
+  <div class="mode-selector">
+    <button class="mode-btn selected" data-mode="Research">Research</button>
+    <button class="mode-btn" data-mode="Focus">Focus</button>
+    <button class="mode-btn" data-mode="Break">Break</button>
+    <button class="mode-btn" data-mode="Custom">Custom</button>
+  </div>
+
+  <button class="glass-btn" id="refreshModeBtn">Refresh Mode</button>
+  <div id="output">AI Output will appear here...</div>
+</div>
+
+<script src="popup/script.js"></script>
+</body>
+</html>

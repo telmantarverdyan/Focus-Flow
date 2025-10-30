@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Focus Flow Settings</title>
+<style>
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+h1 { 
+  margin: 0 0 8px 0;
+  color: #1a202c;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #718096;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+label { 
+  display: block;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+input { 
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 5px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+button { 
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+button:hover { 
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.status { 
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.status.show {
+  opacity: 1;
+}
+
+.status.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.info-box {
+  background: #e6f2ff;
+  border-left: 4px solid #667eea;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.info-box strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #2d3748;
+}
+
+.info-box a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+.steps {
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
+.steps li {
+  margin: 8px 0;
+  color: #4a5568;
+}
+
+.model-select {
+  margin-top: 20px;
+}
+
+select {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 5px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🤖 Focus Flow Settings</h1>
+  <p class="subtitle">Configure your Hugging Face API connection</p>
+
+  <label for="hfToken">Hugging Face API Token</label>
+  <input type="password" id="hfToken" placeholder="hf_xxxxxxxxxxxxxxxxxxxxx">
+
+  <div class="model-select">
+    <label for="modelSelect">AI Model (Optional)</label>
+    <select id="modelSelect">
+      <option value="mistralai/Mistral-7B-Instruct-v0.2">Mistral 7B (Recommended)</option>
+      <option value="meta-llama/Llama-2-7b-chat-hf">Llama 2 7B</option>
+      <option value="google/flan-t5-large">FLAN-T5 Large (Faster)</option>
+      <option value="HuggingFaceH4/zephyr-7b-beta">Zephyr 7B</option>
+    </select>
+  </div>
+
+  <button id="saveKey">💾 Save Settings</button>
+  
+  <div class="status" id="status"></div>
+
+  <div class="info-box">
+    <strong>🎯 How to get your FREE Hugging Face token:</strong>
+    <ol class="steps">
+      <li>Visit <a href="https://huggingface.co/join" target="_blank">huggingface.co/join</a> and create a free account</li>
+      <li>Go to <a href="https://huggingface.co/settings/tokens" target="_blank">Settings → Access Tokens</a></li>
+      <li>Click <strong>"New token"</strong></li>
+      <li>Name it "Focus Flow" and select <strong>"Read"</strong> permission</li>
+      <li>Copy the token (starts with <code>hf_</code>)</li>
+      <li>Paste it above and click Save</li>
+    </ol>
+    <strong style="margin-top: 12px;">✨ It's 100% free forever with no credit card!</strong>
+  </div>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
