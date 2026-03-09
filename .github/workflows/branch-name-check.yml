@@ -1,0 +1,32 @@
+name: Branch Name Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch naming convention
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          echo "Branch name: $BRANCH"
+
+          PATTERN="^(feature|bugfix|hotfix|refactor|core|docs)\/[a-z0-9][a-z0-9\-]*[a-z0-9]$"
+
+          if [[ "$BRANCH" =~ $PATTERN ]]; then
+            echo "✅ Branch name '$BRANCH' follows the naming convention."
+          else
+            echo "❌ Branch '$BRANCH' does NOT follow the naming convention."
+            echo ""
+            echo "Allowed formats:"
+            echo "  feature/<short-description>"
+            echo "  bugfix/<short-description>"
+            echo "  hotfix/<short-description>"
+            echo "  refactor/<short-description>"
+            echo "  core/<short-description>"
+            echo "  docs/<short-description>"
+            exit 1
+          fi
